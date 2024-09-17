@@ -1,0 +1,196 @@
+<%- include('navbar.ejs')%>
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+        
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Shopping Summery -->
+                <table class="table shopping-summery">
+                    <thead>
+                        <tr class="main-hading">
+                            <th>PRODUCT</th>
+                            <th>NAME</th>
+                            <th class="text-center">UNIT PRICE</th>
+                            <th class="text-center">QUANTITY</th>
+                            <th class="text-center">TOTAL</th> 
+                            <th class="text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% 
+                            var total = 0;
+                        
+                        for(var i=0;i<carts.length;i++) 
+                         {
+                             total+=carts[i].product_price * carts[i].qty
+                            %>
+                            
+
+                        <tr>
+                            <td class="image text-center" data-title="No"><img src="/uploads/<%=carts[i].product_image1%>" alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name text-center"><a href="#"><%=carts[i].product_name%></a></p>
+                                <p class="product-des text-center"><%=carts[i].product_info.slice(0,100)%>...</p>
+                            </td>
+                            <td class="price" data-title="Price"><span><b>₹&nbsp;</b><%=carts[i].product_price%></span>
+                            <input type="hidden" class="product_price" id="" value="<%=carts[i].product_price%>">
+                            <input type="hidden" class="cart_id" value="<%=carts[i].cart_id%>" >
+                            </td>
+                            <td class="qty text-center" data-title="Qty"><!-- Input Order -->
+
+                                <div class="input-group ">
+                                    <div class="button minus custom_btn" onclick="change_qty('<%=i%>')">
+                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[<%=i+1%>]">
+                                            <i class="ti-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" name="quant[<%=i+1%>]" class="input-number product_qty"  data-min="1" data-max="100" value="<%=carts[i].qty%>">
+                                                  
+                                    <div class="button plus custom_btn" onclick="change_qty('<%=i%>')" >
+                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[<%=i+1%>]">
+                                            <i class="ti-plus"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <!--/ End Input Order -->
+                            </td>
+                      <td class="total-amount" data-title="Total"><b>₹</b><span class="total_price"> <%=carts[i].product_price * carts[i].qty%><span></td>
+                            <td class="action" data-title="Remove"><a href="/remove_cart/<%=carts[i].cart_id%>"><i class="ti-trash remove-icon"></i></a></td>
+                        </tr>
+                        
+                        <%    }   %>
+                    </tbody>
+                </table>
+                <!--/ End Shopping Summery -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-5 col-12">
+                           
+                        </div>
+                        <div class="col-lg-4 col-md-7 col-12">
+                            <div class="right">
+                                <ul>
+                                    <li >You Pay<span><b>₹</b>&nbsp;<%=total%></span></li>
+                                </ul>
+                                <div class="button5">
+                                    <a href="/checkout" class="btn">Checkout</a>
+                                    <a href="/product" class="btn">Continue shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Shopping Cart -->
+        
+<!-- Start Shop Services Area  -->
+<section class="shop-services section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-rocket"></i>
+                    <h4>Free shiping</h4>
+                    <p>Orders over $100</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-reload"></i>
+                    <h4>Free Return</h4>
+                    <p>Within 30 days returns</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-lock"></i>
+                    <h4>Sucure Payment</h4>
+                    <p>100% secure payment</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Service -->
+                <div class="single-service">
+                    <i class="ti-tag"></i>
+                    <h4>Best Peice</h4>
+                    <p>Guaranteed price</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Shop Newsletter -->
+
+
+<script>
+    function change_qty(index)
+    {
+        var qty = $(".product_qty");
+        var price  = $(".product_price");
+        var total  = $(".total_price");
+        var cart_ids  = $(".cart_id");
+        
+        for( var i=0;i<qty.length;i++)
+        {
+            total[i].innerHTML = qty[i].value * price[i].value;
+        }
+        
+        var obj =
+         {
+            "qty":qty[index].value,
+            "cart_id":cart_ids[index].value
+        }   
+        $.ajax({
+            "url":"/update_cart_qty",
+            "data":obj,
+            "type":"post"
+
+        }).done(function(result){
+            console.log(result);
+        })   
+    }
+</script>
+
+
+
+
+
+
+<%- include('footer.ejs')%>
+
+

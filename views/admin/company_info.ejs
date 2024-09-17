@@ -1,0 +1,96 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/company_info_update" method="post" enctype="multipart/form-data" >
+
+
+    <div class="container-fluid bg-white p-3 shadow">
+
+    <div class="row">
+        <div class="col-md-12 subname ">
+
+            <h3 style="text-align: center;">Company Information</h3>
+
+        </div>
+
+        <div class="col-md-6 ">
+
+            Company Name:-
+            <input value="<%=company_info[0].company_name%>" type="text" name="company_name" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Details:-
+            <textarea type="text" rows="1" name="company_details" id="" class="form-control"><%=company_info[0].company_details%></textarea>
+        </div>
+        <div class="col-md-4 ">
+            Company Logo:-
+            <input  type="file" accept="image/*" name="company_logo" id="" class="form-control" >
+            </div>
+            <div class="col-md-2 pt-2" >
+            <img src="/uploads/<%=company_info[0].company_logo%>" alt="" width="100%" style="margin-top: -50px;"  >
+        </div>
+        <div class="col-md-6 ">
+            Company Contact No:-
+            <input value="<%=company_info[0].company_contact_no%>" type="number" name="company_contact_no" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Email ID:-
+            <input value="<%=company_info[0].company_contact_email%>" type="email" name="company_contact_email" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Address:-
+            <textarea type="text" rows="1" name="company_address" id="" class="form-control">"<%=company_info[0].company_address%>"</textarea>
+        </div>
+        <div class="col-md-6 ">
+            Company Location:-
+            <input value="<%=company_info[0].company_location%>" type="search" name="company_location" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Facebook Link:-
+            <input value="<%=company_info[0].company_facebook_link%>" type="text" name="company_facebook_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Twitter Link:-
+            <input value="<%=company_info[0].company_twitter_link%>" type="search" name="company_twitter_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Whatsapp Link:-
+            <input value="<%=company_info[0].company_whatsapp_link%>" type="search" name="company_whatsapp_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Instagram Link:-
+            <input value="<%=company_info[0].company_instagram_link%>" type="search" name="company_instagram_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Linkedin Link:-
+            <input value="<%=company_info[0].company_linkedin_link%>" type="search" name="company_linkedin_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Telegram Link:-
+            <input value="<%=company_info[0].company_telegram_link%>" type="search" name="company_telegram_link" id="" class="form-control">
+        </div>
+        <div class="col-md-6 ">
+            Company Youtube Link:-
+            <input value="<%=company_info[0].company_youtube_link%>" type="search" name="company_youtube_link" id="" class="form-control">
+        </div>
+        <div class="col-md-12 p-4">
+            <button  class="btn btn-outline-info btn-lg btn-block">Save Information</button>
+
+            
+        </div>
+        
+       
+            
+    </div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+<%-include("footer.ejs")%>
+

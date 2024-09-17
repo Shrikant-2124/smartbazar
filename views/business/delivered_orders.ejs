@@ -1,0 +1,52 @@
+<%-include('navbar.ejs')%>
+
+<div class="col-md-12 subname">
+    <h3>Delivered Order List</h3>
+</div>
+
+<div class="col-md-12">
+    <table class="table table-sm table-bordered">
+
+        <tr>
+                <th>Action</th>
+                <th>Sr.No</th>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Business Name</th>
+                <th>Date</th>
+                <th>Product Name</th>
+                <th>Qty</th>
+                <th>Rate</th>
+                <th>Amount</th>
+
+        </tr>
+
+        <% for(var i=0;i<orders.length;i++)  {  %>
+
+        <tr>
+            <td>
+                <a href="order_det/<%=orders[i].order_id%>">
+                    <button class="btn btn-primary  p-1">View</button>
+                </a>
+            </td>
+            <td><%=i+1%></td>
+            <td>GSK-<%=orders[i].order_id%></td>
+            <td><%=orders[i].fname%>&nbsp;<%=orders[i].lname%></td>
+            <td><%=orders[i].business_name%></td>
+            <td><%=orders[i].order_date%></td>
+            <td><%=orders[i].product_name%></td>
+            <td><%=orders[i].qty%></td>
+            <td>₹<%=orders[i].product_price%></td>
+            <td>₹<%=orders[i].order_price%></td>
+
+
+
+
+        </tr>
+
+        <%   } %>
+
+    </table>
+</div>
+
+<%-include('footer.ejs')%>

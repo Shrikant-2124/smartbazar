@@ -1,0 +1,98 @@
+<%-include('navbar.ejs')%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 subname">
+            <h3 class="text-center text-white shadow">Product Review</h3>
+        </div>
+    </div>
+
+    <div class="row bg-white mt-4" >
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Name</div>
+                <%=product_info[0].product_name%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Price</div>
+                <%=product_info[0].product_price%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Dup Price</div>
+                <%=product_info[0].product_dup_price%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Size</div>
+                <%=product_info[0].product_size%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Color</div>
+                <%=product_info[0].product_color%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Exchange(In days)</div>
+                <%=product_info[0].product_exchange%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Product Info</div>
+                <%=product_info[0].product_info%>
+            </div>
+            <div class="col-md-4  mt-2   mb-3" >
+                <div class="fw-bold">Business Name</div>
+                <%=product_info[0].business_name%>
+            </div>
+            <div class="col-md-4  mt-2  mb-3" >
+                <div class="fw-bold">Product Category</div>
+                <%=product_info[0].product_category_name%>
+
+            </div>
+            
+            <div class="col-md-4   ml-4 mt-2   mb-3" >
+                <div class="fw-bold">Product Image1</div>
+                <img src="/uploads/<%=product_info[0].product_image1%>" alt="" height="220px" width="220px">
+            </div>
+            <div class="col-md-4   ml-4 mt-2   mb-3" >
+                <div class="fw-bold">Product Image2</div>
+                <img src="/uploads/<%=product_info[0].product_image1%>" alt="" height="220px" width="220px">
+            </div>
+            <div class="col-md-4   ml-4 mt-2   mb-3" >
+                <div class="fw-bold">Product Image3</div>
+                <img src="/uploads/<%=product_info[0].product_image1%>" alt="" height="220px" width="220px">
+            </div>
+
+            <div class="col-md-4"></div>
+            <% if(product_info[0].status == 'pending')  {    %>
+            <div class="col-md-4 p-3" >
+                <a href="/admin/approve_product/<%=product_info[0].product_id%>" style="text-decoration: none;">
+                <button class="btn btn-success" >Approve</button>
+                </a>
+                <a href="/admin/reject_product/<%=product_info[0].product_id%>" style="text-decoration: none;">    
+                <button class="btn btn-danger">Reject</button>
+                </a>
+            </div>
+
+            <%  }   %>
+            
+            <div class="col-md-4"></div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<%-include('footer.ejs')%>

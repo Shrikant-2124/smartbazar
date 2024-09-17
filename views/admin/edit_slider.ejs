@@ -1,0 +1,47 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/update_save_slider" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="slider_id"  value="<%=slid[0].slider_id%>">
+    
+    <div class="container bg-white p-3">
+        <div class="row">
+            <div class="col-md-12 subname">
+                <h3 class=" text-center">Edit slider</h3>
+            </div>
+            
+            
+            
+                    <div class="col-md-4 p-3  ">
+                        Select Image:
+                        <input type="file" name="slider_image" required accept="image/*" class="form-control">
+                    </div>
+
+                    <div class="col-md-2 pt-1">
+                        <img src="/uploads/<%=slid[0].slider_image%>" alt="" height="100px" width="100px">
+                    </div>
+                    <div class="col-md-6 p-3  ">
+                        Enter Title:
+                        <input type="text" name="slider_title"  class="form-control" value="<%=slid[0].slider_title%>">
+                    </div>
+                    <div class="col-md-6 p-3  ">
+                        Enter button Text:
+                        <input type="text" name="slider_button_text"  class="form-control" value="<%=slid[0].slider_button_text%>">
+                    </div>
+                    <div class="col-md-6 p-3  ">
+                        Enter Button URL:
+                        <input type="url" name="slider_button_url"  class="form-control" value="<%=slid[0].slider_button_url%>">
+                    </div>
+                    <div class="col-md-3 pt-3 text-center " >
+                    
+                        <button class=" btn btn-primary form-control p-3" style="margin-left: 480px;">Save Slider</button>
+                    </div>
+            
+            
+    </div>
+</div>
+        </form>
+
+
+
+
+<%-include('footer.ejs')%>

@@ -1,0 +1,98 @@
+<%-include('navbar.ejs') %>
+
+<style>
+    .subname h3
+    {
+        /* background-image: linear-gradient(90deg,red 0%,yellow 50%, orange 10%); */
+
+
+        background-color: #FFFFFF;
+        background-image: -webkit-linear-gradient(92deg, #FFFFFF 0%, #6284FF 33%, #FF0000 97%);
+        background-image: -moz-linear-gradient(92deg, #FFFFFF 0%, #6284FF 33%, #FF0000 97%);
+        background-image: -o-linear-gradient(92deg, #FFFFFF 0%, #6284FF 33%, #FF0000 97%);
+        background-image: linear-gradient(92deg, #FFFFFF 0%, #6284FF 33%, #FF0000 97%);
+
+
+
+
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 32px;
+    }
+    .aaa
+    {
+        text-decoration: none;
+        margin-left: 5px;
+    }
+    .aaa button 
+    {
+        border-radius: 5px;
+    }
+</style>
+
+
+<form action="/admin/save_product_category" method="post">
+<div class="container-fluid bg-white p-4 shadow">
+
+    <div class="row">
+        <div class="col-md-12 subname ">
+
+            <h3>Add New Category</h3>
+
+        </div>
+
+        <div class="col-md-4  ">
+            Category Name: <input type="text" name="product_category_name" class="form-control">
+        </div>
+        <div class="col-md-7 ">
+            Category Details: <input type="text" name="product_category_details"  class="form-control">
+        </div>
+        <div class="col-md-1  "><br>
+            <button class="btn btn-outline-dark">Save</button>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="container-fluid bg-white mt-4">
+   
+    <div class="row">
+        <div class="col-12 p-3   subname"><h3>Your Categories</h3></div>
+        <div class="col-12">
+
+                <table  width="100%" class="table table-bordered">
+                    <tr>
+                        <th>Action</th>
+                        <th>Sr.No</th>
+                        <th>product_category_name</th>
+                        <th>product_category_details</th>
+                    </tr>
+
+                    <% for(var i=0;i<product_cate.length;i++)  {   %>
+
+                                <tr>
+                                        <td >
+
+                                            <a href="/admin/edit_product_category/<%=product_cate[i].product_category_id%>" class="aaa" >
+                                                <button class="bg-secondary" ><i class="fa fa-pencil"></i></button>
+                                            </a>
+                                            <a href="/admin/delete_product_category/<%=product_cate[i].product_category_id%>" class="aaa">
+                                                <button  class="bg-danger"onclick="return confirm('Are You Sure...')" ><i class="fa fa-trash"></i></button>
+                                            </a>
+
+                                        </td>
+                                        <td><%=i+1%></td>
+                                        <td><%=product_cate[i].product_category_name%></td>
+                                        <td><%=product_cate[i].product_category_details%></td>
+                                </tr>
+                        <%  } %>
+
+                </table>
+        </div>
+    </div>
+</div>
+
+
+
+<%-include('footer.ejs') %>

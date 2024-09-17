@@ -1,0 +1,115 @@
+<%-include("navbar.ejs")%>
+<style>
+    
+</style>
+
+<form action="/admin/save_slider" method="post" enctype="multipart/form-data">
+
+    <div class="container-fluid bg-white p-3 shadow">
+        <div class="row">
+
+
+            <div class="col-md-12 subname">
+              <h3>Manage Slider</h3>
+            </div>
+
+            <div class="col-md-6 p-3  ">
+                Select Image:
+                <input type="file" name="slider_image" required accept="image/*" class="form-control">
+            </div>
+            <div class="col-md-6 p-3  ">
+                Enter Title:
+                <input type="text" name="slider_title"  class="form-control">
+            </div>
+            <div class="col-md-6 p-3  ">
+                Enter button Text:
+                <input type="text" name="slider_button_text"  class="form-control">
+            </div>
+            <div class="col-md-6 p-3  ">
+                Enter Button URL:
+                <input type="url" name="slider_button_url"  class="form-control">
+            </div>
+            <div class="col-md-3 pt-3 text-center " >
+            
+                <button class=" btn btn-primary form-control p-3" style="margin-left: 480px;">Save Slider</button>
+            </div>
+    
+        </div>
+    </div>
+</form>
+
+<div class="container p-3 bg-white mt-4">
+    <div class="row">
+        <div class="col-md-12 subname text-center">
+            <h3> Slider Table</h3>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered ">
+                <tr>
+                    <th>Action</th>
+                    <th>Sr.No</th>
+                    <th>slider_title</th>
+                    <th>slider_button_text</th>
+                    <th>slider_button_url</th>
+                    <th>slider_image</th>
+                </tr>
+
+                <% for(var i=0;i<sliders.length;i++)    {    %>
+
+                    <tr>
+                        <td>
+                            <a href="/admin/edit_slider/<%=sliders[i].slider_id%>" style="text-decoration: none;">
+                                    <button class="fa fa-pencil"></button>
+                            </a>
+                            <a href="/admin/delete_slider/<%=sliders[i].slider_id%>" style="text-decoration: none;"
+                                    onclick="return confirm('Are You Sure...!')"
+                                >
+                                    <button class="fa fa-trash"></button>
+                            </a>
+
+
+
+                        </td>
+                        <td><%=i+1%></td>
+                        <td><%=sliders[i].slider_title%></td>
+                        <td><%=sliders[i].slider_button_text%></td>
+                        <td><%=sliders[i].slider_button_url%></td>
+                        <td>
+                            <img src="/uploads/<%=sliders[i].slider_image%>" alt="" width="100px" style="margin-left: 20%;"> 
+                        </td>
+
+                    </tr>
+
+                <% } %>
+
+
+
+                
+            </table>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-include("footer.ejs")%>

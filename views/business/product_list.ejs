@@ -1,0 +1,69 @@
+<%- include('navbar.ejs')%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 subname">
+            <h3>Product List</h3>
+        </div>
+    </div>
+
+    <div class="row bg-white m-3">
+        <div class="col-md-12 p-2">
+            <table class="table table-bordered text-center table-sm table-striped">
+                <tr>
+                    <th>Action</th>
+                    <th>Sr.No</th>
+                    <th>Product Name</th>
+                    <th>Product Category</th>
+                    <th>Product Price</th>
+                    <th>Product Image</th>      
+                    <th>Product status</th>
+                    <th>Verified Date</th>
+                </tr>
+                <% for(var i=0;i<productss.length;i++)   { %>
+
+                    <tr>
+                        <td></td>
+                        <td><%=i+1%></td>
+                        <td><%=productss[i].product_name%></td>
+                        <td><%=productss[i].product_category_id%></td>
+                        <td><%=productss[i].product_price%></td>
+                        <td><%=productss[i].product_image1%></td>
+                        <td>
+                            <% if (productss[i].status === 'pending') { %>
+                                <span style="color: red; font-weight: bold; text-transform: uppercase;">
+                                    <%= productss[i].status %>
+                                </span>
+                            <% } else { %>
+                                <span style="color: green; font-weight: bold; text-transform: uppercase;">
+                                    <%= productss[i].status %>
+                                </span>
+                            <% } %>
+                        </td>
+
+                        <td style="font-size: 13px; font-weight: bold;"><%=productss[i].verified_date%></td>
+
+                    </tr>
+
+                <% } %>
+              
+               
+
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<%- include('footer.ejs')%>

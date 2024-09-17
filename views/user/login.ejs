@@ -1,0 +1,32 @@
+<%- include('navbar.ejs')%>
+<br><br><br><br>
+<style>
+    .form-control
+    {
+        height: 45px;
+    }
+    
+</style>
+<form action="/login_account" method="post">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="shadow border p-3 ">
+                                                 
+                <input type="email" name="user_email" id="" class="form-control" placeholder="Email ID"><br>
+               
+                <input type="password" name="user_password" id="" class="form-control" placeholder="Password"><br>
+                <center><button class="btn btn-primary btn btn-lg ">Login Now</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<br><br><br><br>
+
+
+
+
+
+<br><br><br><br>
+<%- include('footer.ejs')%>

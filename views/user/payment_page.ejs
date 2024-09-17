@@ -1,0 +1,31 @@
+
+
+<!-- <button id="rzp-button1">Pay</button> -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_Fsww3UGPSxLMLD", // Enter the Key ID generated from the Dashboard
+    "amount": "<%=amount*100%>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "GSK", //your business name
+    "description": "Order Placed",
+    "image": "https://a2zithub.org/assets/165710745335077275.png",
+    "callback_url": "http://localhost:1000/save_payment/<%=transaction_id%>",
+    "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+        "name": "<%=info.fname%>,<%=info.lname%>", //your customer's name
+        "email": "<%=info.email%>",
+        "contact": "<%=info.mobile%>" //Provide the customer's phone number for better conversion rates 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+// document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+// }
+</script>

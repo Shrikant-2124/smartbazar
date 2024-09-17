@@ -1,0 +1,354 @@
+<%-include('navbar.ejs')%>
+<style>
+    .invoice-box{
+        max-width:800px;
+        margin:auto;
+        padding:30px;
+        border:1px solid #eee;
+        box-shadow:0 0 10px rgba(0, 0, 0, .15);
+        font-size:16px;
+        line-height:24px;
+        font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color:#555;
+    }
+    
+    .invoice-box table{
+        width:100%;
+        line-height:inherit;
+        text-align:left;
+    }
+    
+    .invoice-box table td{
+        padding:5px;
+        vertical-align:top;
+    }
+    
+    .invoice-box table tr td:nth-child(2){
+        text-align:right;
+    }
+    
+    .invoice-box table tr.top table td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.top table td.title{
+        font-size:45px;
+        line-height:45px;
+        color:#333;
+    }
+    
+    .invoice-box table tr.information table td{
+        padding-bottom:40px;
+    }
+    
+    .invoice-box table tr.heading td{
+        background:#eee;
+        border-bottom:1px solid #ddd;
+        font-weight:bold;
+    }
+    
+    .invoice-box table tr.details td{
+        padding-bottom:20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom:1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td{
+        border-bottom:none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2){
+        border-top:2px solid #eee;
+        font-weight:bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+        
+        .invoice-box table tr.information table td{
+            width:100%;
+            display:block;
+            text-align:center;
+        }
+    }
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+
+
+
+    /*==========  Mobile First Method  ==========*/
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width : 320px) {
+        
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
+
+
+
+    /*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+        
+    }
+    
+    
+    
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+}
+
+
+    /* default styles here for older browsers. 
+       I tend to go for a 600px - 960px width max but using percentages
+    */
+    @media only screen and (min-width:960px){
+        /* styles for browsers larger than 960px; */
+    }
+    @media only screen and (min-width:1440px){
+        /* styles for browsers larger than 1440px; */
+    }
+    @media only screen and (min-width:2000px){
+        /* for sumo sized (mac) screens */
+    }
+    @media only screen and (max-device-width:480px){
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+    }
+    @media only screen and (device-width:768px){
+       /* default iPad screens */
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+      /* For portrait layouts only */
+    }
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+      /* For landscape layouts only */
+    }
+</style>
+
+<div class="col-md-12 subname">
+    <h3>Order information</h3>
+</div>
+
+<div class="col-md-12">
+
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title">
+                            <img src="https://serving.photos.photobox.com/82671138356e156fe17271552585039f1612b330d9741b58284e2bf05756674b27614c59.jpg">
+                            
+                        </td>
+                        
+                        <td>
+                            Invoice #:GSK-<%=order_info[0].order_id%><br>
+                            Created: <%=order_info[0].order_date%><br>
+                           
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            <%=order_info[0].address1%><br>
+                            <%=order_info[0].address2%><br>
+                            <%=order_info[0].state%>-<%=order_info[0].postal%>
+                        </td>
+                        
+                        <td>
+                            <%=order_info[0].fname%>
+                            <%=order_info[0].lname%><br>
+                            <%=order_info[0].mobile%><br>
+                            <%=order_info[0].email%><br>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr class="" style="font-weight: bold; padding: 10px; background-color: #d0c8c8;">
+            <td style="text-transform: uppercase; padding: 10px; ">
+                <%=order_info[0].payment_type %> Payment
+            </td>
+
+            <td class="text-uppercase">
+
+                <% if(order_info[0].payment_status == 'pending') { %>
+                    PENDING
+                    <% } %>
+                <%  if(order_info[0].payment_status == 'success' && order_info[0].business_payment_status == '') { %>
+                    RECEIVED TO ADMIN
+                <% }  %>
+                <% if(order_info[0].payment_status == 'success' &&  order_info[0].business_payment_status != '' ) {  %>
+                RECEIVED FROM ADMIN 
+                <br>
+                <span style=" font-size: 15px;">
+                Transaction ID:<b> <%=order_info[0].transfer_no%> </b>
+                </span>
+
+                <% } %>
+
+
+
+            </td>
+            
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" class="table table-bordered text-center mt-1">
+
+        <tr class="bg-warning">
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+
+        <%  for(var i=0;i<order_info.length;i++)  {  %>
+
+
+            <tr >
+                <td><%=order_info[i].product_name%></td>
+                <td class="text-center">₹<%=order_info[i].product_price%></td>
+                <td><%=order_info[i].qty%> qty</td>
+                <td class="fw-bold">₹<%=order_info[i].order_price%></td>
+                
+            </tr>
+            
+           <%   }  %> 
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<center>
+    <% if(order_info[0].order_status == 'pending' ) { %>
+  <a href="/business/transfer_order_in_dispatch/<%=order_info[0].order_id%>">  <button class="btn btn-secondary btn-md p-2 m-2 ps-5 pe-5 ">Dispatch</button>
+  </a>
+  <a href="/business/transfer_order_in_reject/<%=order_info[0].order_id%>">  <button class="btn btn-secondary btn-md p-2 m-2 ps-5 pe-5 ">Reject</button>
+  </a>
+  <%  } %>
+<button class="btn btn-primary btn-md p-2 m-2 ps-5 pe-5" onclick="printpage()" ><i class="fa fa-print"></i>  Print</button>
+
+<% if(order_info[0].order_status == 'dispatch' ) { %>
+    <a href="/business/transfer_order_in_deliver/<%=order_info[0].order_id%>">  <button class="btn btn-secondary btn-md p-2 m-2 ps-5 pe-5 ">Deliver</button>
+        <a href="/business/transfer_order_in_reject/<%=order_info[0].order_id%>">  <button class="btn btn-secondary btn-md p-2 m-2 ps-5 pe-5 ">Reject</button>
+        </a>
+
+    </a>
+    <%  } %>
+
+</center>
+
+
+
+</div>
+
+
+<script>
+    function printpage() {
+      
+        window.print();
+       
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<%-include('footer.ejs')%>
